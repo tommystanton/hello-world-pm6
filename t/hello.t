@@ -6,7 +6,7 @@ use Hello;
 
 is-deeply(
     Hello.^methods().map({ .name }).sort,
-    ('greet',).sort,
+    ('greet', 'greet-personally',).list.sort,
     "Class 'Hello' implements methods"
 );
 
@@ -15,6 +15,7 @@ isa-ok(Hello.new(), Hello);
 {
     my $hello = Hello.new();
     is($hello.greet(), 'Hello world!', 'greet()');
+    is($hello.greet-personally('Bob'), 'Hello Bob!', 'greet-personally()');
 }
 
 done-testing();
