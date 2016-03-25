@@ -1,10 +1,10 @@
 class Hello {
-    method greet() returns Str {
-        return "Hello world!";
-    }
+    method greet(Str $name?) returns Str {
+        if $name {
+            return "Hello $name!";
+        }
 
-    method greet-personally(Str $name) returns Str {
-        return "Hello $name!";
+        return "Hello world!";
     }
 }
 
