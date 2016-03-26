@@ -2,11 +2,9 @@ class Hello {
     has Str $.name;
 
     method greet() returns Str {
-        if $.name {
-            return "Hello $.name!";
-        }
+        my $greeting = sprintf 'Hello %s!', $.name // 'world';
 
-        return "Hello world!";
+        return $greeting;
     }
 }
 
