@@ -4,19 +4,13 @@ use Test;
 use lib 'lib';
 use Hello;
 
-is-deeply(
-    Hello.^methods().map({ .name }).sort,
-    ('greet', 'name',).list.sort,
-    "Class 'Hello' implements methods"
-);
+{
+    my $hello = Hello.new();
 
-is-deeply(
-    Hello.^attributes().map({ .name.substr(2) }).sort,
-    ('name',).list.sort,
-    "Class 'Hello' has attributes"
-);
-
-isa-ok(Hello.new(), Hello);
+    isa-ok($hello, Hello);
+    can-ok($hello, 'greet');
+    can-ok($hello, 'name');
+}
 
 {
     my $hello = Hello.new();
